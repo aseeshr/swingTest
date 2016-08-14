@@ -51,6 +51,7 @@ public class TestJTable extends JFrame {
 	private JMenuItem mntmDebug;
 	private JMenuItem mntmOpenProject;
 	private JMenuItem mntmWelcome;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -89,6 +90,7 @@ public class TestJTable extends JFrame {
 		contentPane.add(getBtnSave());
 		contentPane.add(getScrollPane());
 		contentPane.add(getMenuBar_1());
+		contentPane.add(getBtnNewButton());
 	}
 
 	private JLabel getLblFirstname() {
@@ -176,7 +178,7 @@ public class TestJTable extends JFrame {
 	private JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(45, 188, 551, 154);
+			scrollPane.setBounds(45, 219, 562, 154);
 			scrollPane.setViewportView(getTable());
 		}
 		return scrollPane;
@@ -196,7 +198,6 @@ public class TestJTable extends JFrame {
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.addRow(new Object[] { firstNameTxt.getText(), lastNameTxt.getText(), addressTxt.getText(),
 				phoneNoTxt.getText() });
-		clearData();
 
 	}
 
@@ -316,5 +317,19 @@ public class TestJTable extends JFrame {
 			mntmWelcome = new JMenuItem("Welcome");
 		}
 		return mntmWelcome;
+	}
+
+	private JButton getBtnNewButton() {
+		if (btnNewButton == null) {
+			btnNewButton = new JButton("Clear");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					clearData();
+
+				}
+			});
+			btnNewButton.setBounds(482, 177, 89, 23);
+		}
+		return btnNewButton;
 	}
 }
